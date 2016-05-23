@@ -14,7 +14,7 @@ read.YS <- function(file) {
 # Define function to decode using lookups
 decode.YS <- function(db, drop=FALSE) {
       require(data.table)
-      links <- fread(db)
+      links <- fread("Data/tables.csv")
       for(j in 1:nrow(links)) {
             tab <- links[j, TABLE]
             field <- links[j, FIELD]
@@ -32,13 +32,21 @@ decode.YS <- function(db, drop=FALSE) {
 }
 
 # Export as csv files
-export.YS <- function(db, lookup=TRUE, measures=TRUE) {
+export.YS <- function(db, folder="YorkSystem-data", lookup=TRUE, measures=TRUE) {
+      exc <- c("L", "M")[!c(lookup, measures)]
+      inc <- !substr(names(db), 1, 1) %in% exc | names(db) %in% c("MainRecordingTable", "Mandible") 
+      if (!file.exists(folder)) {
+            dir.create(file.path(getwd(), folder))
+      }      
       for(i in 1:length(db)) {
-            write.csv(db[[i]], paste(names(db)[i], ".csv", sep=""), row.names = FALSE)
+            write.csv(db[[i]], paste(folder, "/", names(db)[i], ".csv", sep=""), row.names = FALSE)
       }
 }
 
+### Collate measurements
+# Define fucntion to melt and concatenate all measurement tables
 
-db <- read.YS("test.mdb")
-db <- decode.YS(db)
+### Merge
+# Define function to merge the main data tables into a single data.table
+
 
