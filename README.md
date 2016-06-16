@@ -1,6 +1,6 @@
 #York System extractor
 
-Some tools to help extract data from the _York System_ MS Access-based zooarchaeological recording system (Harland _et al._ 2003). This was designed for Access 2000 and suffers from various compatability issues with more recent versions of the software that make it very difficult to extract data either in raw form or via the in-built report templates. The code here provides an automated solution for extraction and simple manipulation of data from within a York System .mdb file.
+Some tools to help extract data from the _York System_ MS Access-based zooarchaeological recording system (Harland _et al._ 2003). This was designed for Access 2000 and suffers from various compatability issues with more recent versions of the software that complicate data extraction. The code here provides an automated solution for extraction and simple manipulation of data from within a York System .mdb file.
 
 ##Current functions
 
